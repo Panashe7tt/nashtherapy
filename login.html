@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In | Nash Therapy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Nash Therapy" class="logo-img">
+      </a>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-card animate-fade-up">
+      <div class="auth-tabs">
+        <a href="login.html" class="auth-tab active">Log In</a>
+        <a href="signup.html" class="auth-tab">Sign Up</a>
+      </div>
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-subtitle">Your information stays private.</p>
+      <form class="auth-form" id="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="student@university.edu" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" required>
+        </div>
+        <p id="login-error" style="color:#c0392b;font-size:14px;margin:0 0 12px;display:none"></p>
+        <button type="submit" class="btn btn-primary btn-lg btn-full">Log In</button>
+      </form>
+      <p class="auth-footer">Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </main>
+  <script src="script.js"></script>
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var key = NashAuth.clean(document.getElementById("email").value);
+      var password = document.getElementById("password").value;
+      var user = NashAuth.users()[key];
+      var error = document.getElementById("login-error");
+      if (!user) {
+        error.textContent = "We could not find an account with that email. Please sign up first.";
+        error.style.display = "block";
+        return;
+      }
+      if (user.password !== password) {
+        error.textContent = "That password is not correct. Please try again.";
+        error.style.display = "block";
+        return;
+      }
+      NashAuth.login(key);
+      window.location.href = "dashboard.html";
+    });
+  </script>
+</body>
+</html>

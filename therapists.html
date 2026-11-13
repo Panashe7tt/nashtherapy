@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find a Therapist | Nash Therapy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="Nash Therapy" class="logo-img"></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="therapists.html" class="nav-link active">Therapists</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="exercises.html" class="nav-link">Exercises</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="login.html" class="btn btn-outline">Log In</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="container">
+      <div class="page-header animate-fade-up">
+        <h1>Find the right therapist for you</h1>
+        <p>All therapists are licensed, student-focused, and here to support you.</p>
+      </div>
+
+      <div class="filters animate-fade-up delay-1">
+        <input type="search" id="therapist-search" class="search-input" placeholder="Search by name or speciality..." aria-label="Search therapists">
+        <select id="speciality-filter" class="filter-select" aria-label="Filter by specialisation">
+          <option value="">All specialisations</option>
+          <option>Anxiety</option>
+          <option>Academic Stress</option>
+          <option>Depression</option>
+          <option>Trauma</option>
+          <option>Relationships</option>
+        </select>
+        <select id="gender-filter" class="filter-select" aria-label="Filter by gender">
+          <option value="">Any gender</option>
+          <option>Female</option>
+          <option>Male</option>
+        </select>
+      </div>
+
+      <div class="quiz-callout"><div><h2>Not sure who to choose?</h2><p>Answer three quick questions and we will suggest a therapist to explore.</p></div><button class="btn btn-primary" id="open-quiz">Help me choose</button></div>
+      <p id="therapist-count" class="muted" aria-live="polite"></p>
+      <div class="therapist-grid" id="therapist-grid" style="margin-top:16px">
+        <article class="therapist-card animate-on-scroll">
+          <img src="images/thandi.jpg" alt="Dr. Thandi Mokoena" class="therapist-photo">
+          <div class="therapist-info">
+            <h3>Dr. Thandi Mokoena <span class="verified">✓</span></h3>
+            <p class="therapist-cred">Clinical Psychologist · 10+ years · ★ 4.9</p>
+            <div class="tags"><span class="tag">Anxiety</span><span class="tag">Student Stress</span></div>
+            <p class="therapist-bio">Passionate about supporting students through academic life and finding balance.</p>
+            <div class="therapist-actions">
+              <a href="therapist-profile.html?t=thandi" class="btn btn-outline btn-sm">View Profile</a>
+              <a href="booking.html?t=thandi" class="btn btn-primary btn-sm">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="therapist-card animate-on-scroll">
+          <img src="images/maya.jpg" alt="Dr. Maya Ellison" class="therapist-photo">
+          <div class="therapist-info">
+            <h3>Dr. Maya Ellison <span class="verified">✓</span></h3>
+            <p class="therapist-cred">LCSW · 8+ years · ★ 4.8</p>
+            <div class="tags"><span class="tag">Anxiety</span><span class="tag">Academic Stress</span></div>
+            <p class="therapist-bio">Helps students manage anxiety and academic pressure through practical strategies.</p>
+            <div class="therapist-actions">
+              <a href="therapist-profile.html?t=maya" class="btn btn-outline btn-sm">View Profile</a>
+              <a href="booking.html?t=maya" class="btn btn-primary btn-sm">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="therapist-card animate-on-scroll">
+          <img src="images/james.jpg" alt="Dr. James Park" class="therapist-photo">
+          <div class="therapist-info">
+            <h3>Dr. James Park <span class="verified">✓</span></h3>
+            <p class="therapist-cred">LPC · 6+ years · ★ 4.7</p>
+            <div class="tags"><span class="tag">Depression</span><span class="tag">Trauma</span></div>
+            <p class="therapist-bio">Supports students navigating depression and trauma with compassion.</p>
+            <div class="therapist-actions">
+              <a href="therapist-profile.html?t=james" class="btn btn-outline btn-sm">View Profile</a>
+              <a href="booking.html?t=james" class="btn btn-primary btn-sm">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="therapist-card animate-on-scroll">
+          <img src="images/leila.jpg" alt="Dr. Leila Morgan" class="therapist-photo">
+          <div class="therapist-info">
+            <h3>Dr. Leila Morgan <span class="verified">✓</span></h3>
+            <p class="therapist-cred">LMFT · 7+ years · ★ 4.9</p>
+            <div class="tags"><span class="tag">Relationships</span><span class="tag">Self-Esteem</span></div>
+            <p class="therapist-bio">Helps students build healthier relationships and stronger self-worth.</p>
+            <div class="therapist-actions">
+              <a href="therapist-profile.html?t=leila" class="btn btn-outline btn-sm">View Profile</a>
+              <a href="booking.html?t=leila" class="btn btn-primary btn-sm">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="therapist-card animate-on-scroll">
+          <img src="images/rohan.jpg" alt="Dr. Rohan Singh" class="therapist-photo">
+          <div class="therapist-info">
+            <h3>Dr. Rohan Singh <span class="verified">✓</span></h3>
+            <p class="therapist-cred">LCSW · 5+ years · ★ 4.6</p>
+            <div class="tags"><span class="tag">Academic Stress</span><span class="tag">Mindfulness</span></div>
+            <p class="therapist-bio">Works with students to reduce stress, build balance and regain control.</p>
+            <div class="therapist-actions">
+              <a href="therapist-profile.html?t=rohan" class="btn btn-outline btn-sm">View Profile</a>
+              <a href="booking.html?t=rohan" class="btn btn-primary btn-sm">Book</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="therapist-card animate-on-scroll">
+          <img src="images/sofia.jpg" alt="Dr. Sofia Andersson" class="therapist-photo">
+          <div class="therapist-info">
+            <h3>Dr. Sofia Andersson <span class="verified">✓</span></h3>
+            <p class="therapist-cred">Clinical Psychologist · 12+ years · ★ 4.9</p>
+            <div class="tags"><span class="tag">Anxiety</span><span class="tag">Depression</span></div>
+            <p class="therapist-bio">Experienced in student mental health with a warm, evidence-based approach.</p>
+            <div class="therapist-actions">
+              <a href="therapist-profile.html?t=sofia" class="btn btn-outline btn-sm">View Profile</a>
+              <a href="booking.html?t=sofia" class="btn btn-primary btn-sm">Book</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-copy">© 2026 Nash Therapy. All sessions are confidential.</p>
+    </div>
+  </footer>
+  <div class="modal-backdrop" id="quiz-modal" hidden><section class="feature-modal" role="dialog" aria-modal="true" aria-labelledby="quiz-title"><button class="modal-close" id="close-quiz" aria-label="Close">×</button><h2 id="quiz-title">Help me choose</h2><form id="quiz-form"><label for="quiz-focus">What would you like support with?</label><select id="quiz-focus" required><option value="">Choose one</option><option>Anxiety</option><option>Academic Stress</option><option>Depression</option><option>Trauma</option><option>Relationships</option><option>Self-Esteem</option><option>Mindfulness</option></select><label for="quiz-gender">Do you have a therapist gender preference?</label><select id="quiz-gender" required><option value="">Choose one</option><option value="Any">No preference</option><option>Female</option><option>Male</option></select><label for="quiz-style">What matters most to you?</label><select id="quiz-style" required><option value="">Choose one</option><option value="Student support">Experience supporting students</option><option value="Practical tools">Practical coping tools</option><option value="Warm approach">A warm, supportive approach</option></select><button class="btn btn-primary btn-full" type="submit">Find my match</button></form><div id="quiz-result" aria-live="polite"></div></section></div>
+  <script src="therapist-data.js"></script><script src="script.js"></script>
+</body>
+</html>

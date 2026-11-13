@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages | Nash Therapy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="Nash Therapy" class="logo-img"></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="therapists.html" class="nav-link">Therapists</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="container" style="max-width:800px">
+      <div class="chat-header animate-fade-up">
+        <div class="therapist-avatar">TM</div>
+        <div>
+          <strong>Dr. Thandi Mokoena</strong>
+          <p class="muted"><span class="encrypted-badge">Encrypted</span> · Messages are private and secure</p>
+        </div>
+      </div>
+
+      <div class="chat-window animate-fade-up delay-1" id="chat-window">
+        <div class="msg received">
+          <p>Hi Panashe, thank you for reaching out and sharing that with me. That sounds really heavy, and it makes sense that you're feeling overwhelmed.</p>
+          <span class="msg-time">10:07 AM</span>
+        </div>
+        <div class="msg sent">
+          <p>It helps to know I can message you here. I just feel stuck sometimes, like I don't know where to start.</p>
+          <span class="msg-time">10:11 AM</span>
+        </div>
+        <div class="msg received">
+          <p>You've already taken a strong first step by checking in. We can break this down together, one small step at a time.</p>
+          <span class="msg-time">10:16 AM</span>
+        </div>
+        <div class="msg sent">
+          <p>Yes, that would be helpful. Thank you, Thandi.</p>
+          <span class="msg-time">10:18 AM</span>
+        </div>
+      </div>
+
+      <form class="chat-input-bar animate-fade-up delay-2" id="chat-form">
+        <input type="text" placeholder="Type a message..." id="chat-input" autocomplete="off">
+        <button type="submit" class="btn btn-primary">Send</button>
+      </form>
+      <p class="privacy-note center">This conversation is secure and confidential.</p>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    (function(){var key=NashAuth.key('nash-messages'), win=document.getElementById('chat-window'), messages=[];try{messages=JSON.parse(localStorage.getItem(key))||[];}catch(e){}function render(){messages.forEach(function(m){var d=document.createElement('div');d.className='msg sent';var p=document.createElement('p');p.textContent=m.text;var t=document.createElement('span');t.className='msg-time';t.textContent=m.time;d.append(p,t);win.appendChild(d);});win.scrollTop=win.scrollHeight;}render();document.getElementById('chat-form').addEventListener('submit',function(e){e.preventDefault();var input=document.getElementById('chat-input'),value=input.value.trim();if(!value)return;var time=new Date().toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit'});messages.push({text:value,time:time});localStorage.setItem(key,JSON.stringify(messages));var d=document.createElement('div');d.className='msg sent';var p=document.createElement('p');p.textContent=value;var t=document.createElement('span');t.className='msg-time';t.textContent=time;d.append(p,t);win.appendChild(d);input.value='';win.scrollTop=win.scrollHeight;});})();
+  </script>
+</body>
+</html>

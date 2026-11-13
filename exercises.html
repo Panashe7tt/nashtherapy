@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guided Exercises | Nash Therapy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Nash Therapy" class="logo-img">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="therapists.html" class="nav-link">Therapists</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="exercises.html" class="nav-link active">Exercises</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="container" style="max-width:760px">
+      <div class="page-header animate-fade-up">
+        <h1>Guided Exercises</h1>
+        <p>Breathing, movement and cool-down tools with built-in timers. Give feedback when you finish.</p>
+      </div>
+
+      <!-- 1. Box Breathing -->
+      <section class="exercise-card animate-on-scroll" id="ex-breathing">
+        <h2>1. Box Breathing</h2>
+        <p class="muted">Inhale 4s → Hold 4s → Exhale 4s → Hold 4s. Reduces anxiety quickly.</p>
+        <div class="breathing-area">
+          <div id="breath-circle" class="breath-circle">
+            <span id="breath-text">Ready</span>
+            <span id="breath-count" class="breath-count">4</span>
+          </div>
+          <p id="breath-instruction" class="breath-instruction">Press Start when you are ready</p>
+          <div class="breath-controls">
+            <button id="breath-start" class="btn btn-primary btn-lg">Start</button>
+            <button id="breath-stop" class="btn btn-outline btn-lg" style="display:none">Stop</button>
+          </div>
+        </div>
+        <div class="feedback-box" id="feedback-breathing" style="display:none">
+          <p><strong>How do you feel after this exercise?</strong></p>
+          <div class="feedback-btns">
+            <button class="fb-btn" data-ex="breathing">😊 Calmer</button>
+            <button class="fb-btn" data-ex="breathing">😐 Same</button>
+            <button class="fb-btn" data-ex="breathing">😓 Still tense</button>
+          </div>
+          <p class="fb-thanks" style="display:none;color:var(--color-primary);margin-top:10px">Thank you for your feedback.</p>
+        </div>
+      </section>
+
+      <!-- 2. Stretch timer -->
+      <section class="exercise-card animate-on-scroll" id="ex-stretch">
+        <h2>2. Desk Stretch (2 minutes)</h2>
+        <p class="muted">Stand up, roll shoulders, stretch arms and neck. Use the stopwatch.</p>
+        <div class="timer-area">
+          <div class="timer-display" id="stretch-timer">02:00</div>
+          <div class="breath-controls">
+            <button id="stretch-start" class="btn btn-primary btn-lg">Start 2-min Stretch</button>
+            <button id="stretch-stop" class="btn btn-outline btn-lg" style="display:none">Stop</button>
+          </div>
+        </div>
+        <div class="feedback-box" id="feedback-stretch" style="display:none">
+          <p><strong>How do you feel after stretching?</strong></p>
+          <div class="feedback-btns">
+            <button class="fb-btn" data-ex="stretch">😊 Looser</button>
+            <button class="fb-btn" data-ex="stretch">😐 Same</button>
+            <button class="fb-btn" data-ex="stretch">😓 Still stiff</button>
+          </div>
+          <p class="fb-thanks" style="display:none;color:var(--color-primary);margin-top:10px">Thank you for your feedback.</p>
+        </div>
+      </section>
+
+      <!-- 3. Walking cool-down -->
+      <section class="exercise-card animate-on-scroll" id="ex-walk">
+        <h2>3. Mindful Walking (3 minutes)</h2>
+        <p class="muted">Walk slowly, notice each step and your breathing. Great after long study sessions.</p>
+        <div class="timer-area">
+          <div class="timer-display" id="walk-timer">03:00</div>
+          <div class="breath-controls">
+            <button id="walk-start" class="btn btn-primary btn-lg">Start 3-min Walk</button>
+            <button id="walk-stop" class="btn btn-outline btn-lg" style="display:none">Stop</button>
+          </div>
+        </div>
+        <div class="feedback-box" id="feedback-walk" style="display:none">
+          <p><strong>How do you feel after walking?</strong></p>
+          <div class="feedback-btns">
+            <button class="fb-btn" data-ex="walk">😊 Refreshed</button>
+            <button class="fb-btn" data-ex="walk">😐 Same</button>
+            <button class="fb-btn" data-ex="walk">😓 Still restless</button>
+          </div>
+          <p class="fb-thanks" style="display:none;color:var(--color-primary);margin-top:10px">Thank you for your feedback.</p>
+        </div>
+      </section>
+
+      <!-- 4. Grounding (no timer) -->
+      <section class="exercise-card animate-on-scroll">
+        <h2>4. 5-4-3-2-1 Grounding</h2>
+        <p class="muted">Use your senses to return to the present moment.</p>
+        <ul class="grounding-list">
+          <li><strong>5</strong> things you can <em>see</em></li>
+          <li><strong>4</strong> things you can <em>touch</em></li>
+          <li><strong>3</strong> things you can <em>hear</em></li>
+          <li><strong>2</strong> things you can <em>smell</em></li>
+          <li><strong>1</strong> thing you can <em>taste</em></li>
+        </ul>
+      </section>
+
+      <!-- 5. Body scan cool-down -->
+      <section class="exercise-card animate-on-scroll" id="ex-bodyscan">
+        <h2>5. Cool-Down Body Scan (4 minutes)</h2>
+        <p class="muted">Progressive relaxation from feet to head. Ideal before sleep or after stress.</p>
+        <div class="timer-area">
+          <div class="timer-display" id="scan-timer">04:00</div>
+          <div class="breath-controls">
+            <button id="scan-start" class="btn btn-primary btn-lg">Start Body Scan</button>
+            <button id="scan-stop" class="btn btn-outline btn-lg" style="display:none">Stop</button>
+          </div>
+        </div>
+        <div class="feedback-box" id="feedback-scan" style="display:none">
+          <p><strong>How relaxed do you feel now?</strong></p>
+          <div class="feedback-btns">
+            <button class="fb-btn" data-ex="scan">😊 Very relaxed</button>
+            <button class="fb-btn" data-ex="scan">😐 A bit better</button>
+            <button class="fb-btn" data-ex="scan">😓 Still tense</button>
+          </div>
+          <p class="fb-thanks" style="display:none;color:var(--color-primary);margin-top:10px">Thank you for your feedback.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      // ---- Box Breathing ----
+      var circle = document.getElementById("breath-circle");
+      var text = document.getElementById("breath-text");
+      var countEl = document.getElementById("breath-count");
+      var instruction = document.getElementById("breath-instruction");
+      var startBtn = document.getElementById("breath-start");
+      var stopBtn = document.getElementById("breath-stop");
+      var breathTimer = null, phase = 0;
+      var phases = [
+        { name: "Breathe In", duration: 4, scale: 1.35 },
+        { name: "Hold", duration: 4, scale: 1.35 },
+        { name: "Breathe Out", duration: 4, scale: 1 },
+        { name: "Hold", duration: 4, scale: 1 }
+      ];
+      var breathCycles = 0;
+
+      function runPhase() {
+        var p = phases[phase];
+        text.textContent = p.name;
+        instruction.textContent = p.name + " slowly...";
+        circle.style.transform = "scale(" + p.scale + ")";
+        var c = p.duration;
+        countEl.textContent = c;
+        breathTimer = setInterval(function () {
+          c--;
+          countEl.textContent = c;
+          if (c <= 0) {
+            clearInterval(breathTimer);
+            phase = (phase + 1) % 4;
+            if (phase === 0) breathCycles++;
+            if (breathCycles >= 3) {
+              // After ~3 full cycles show feedback
+              startBtn.style.display = "inline-flex";
+              stopBtn.style.display = "none";
+              circle.style.transform = "scale(1)";
+              text.textContent = "Done";
+              instruction.textContent = "Great work. How do you feel?";
+              document.getElementById("feedback-breathing").style.display = "block";
+              return;
+            }
+            runPhase();
+          }
+        }, 1000);
+      }
+
+      startBtn.addEventListener("click", function () {
+        startBtn.style.display = "none";
+        stopBtn.style.display = "inline-flex";
+        document.getElementById("feedback-breathing").style.display = "none";
+        phase = 0; breathCycles = 0;
+        runPhase();
+      });
+      stopBtn.addEventListener("click", function () {
+        clearInterval(breathTimer);
+        circle.style.transform = "scale(1)";
+        text.textContent = "Ready";
+        countEl.textContent = "4";
+        instruction.textContent = "Press Start when you are ready";
+        startBtn.style.display = "inline-flex";
+        stopBtn.style.display = "none";
+        document.getElementById("feedback-breathing").style.display = "block";
+      });
+
+      // ---- Generic countdown timer helper ----
+      function createTimer(displayId, startId, stopId, feedbackId, totalSeconds) {
+        var display = document.getElementById(displayId);
+        var start = document.getElementById(startId);
+        var stop = document.getElementById(stopId);
+        var feedback = document.getElementById(feedbackId);
+        var timer = null;
+        var remaining = totalSeconds;
+
+        function format(s) {
+          var m = Math.floor(s / 60);
+          var sec = s % 60;
+          return (m < 10 ? "0" : "") + m + ":" + (sec < 10 ? "0" : "") + sec;
+        }
+
+        start.addEventListener("click", function () {
+          remaining = totalSeconds;
+          display.textContent = format(remaining);
+          start.style.display = "none";
+          stop.style.display = "inline-flex";
+          feedback.style.display = "none";
+          timer = setInterval(function () {
+            remaining--;
+            display.textContent = format(remaining);
+            if (remaining <= 0) {
+              clearInterval(timer);
+              display.textContent = "00:00";
+              start.style.display = "inline-flex";
+              stop.style.display = "none";
+              feedback.style.display = "block";
+            }
+          }, 1000);
+        });
+
+        stop.addEventListener("click", function () {
+          clearInterval(timer);
+          display.textContent = format(totalSeconds);
+          start.style.display = "inline-flex";
+          stop.style.display = "none";
+          feedback.style.display = "block";
+        });
+      }
+
+      createTimer("stretch-timer", "stretch-start", "stretch-stop", "feedback-stretch", 120);
+      createTimer("walk-timer", "walk-start", "walk-stop", "feedback-walk", 180);
+      createTimer("scan-timer", "scan-start", "scan-stop", "feedback-scan", 240);
+
+      // ---- Feedback buttons ----
+      document.querySelectorAll(".fb-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var box = btn.closest(".feedback-box");
+          box.querySelectorAll(".fb-btn").forEach(function (b) { b.style.opacity = "0.5"; });
+          btn.style.opacity = "1";
+          btn.style.outline = "2px solid var(--color-primary)";
+          box.querySelector(".fb-thanks").style.display = "block";
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

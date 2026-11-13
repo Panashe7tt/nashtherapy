@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ | Nash Therapy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="Nash Therapy" class="logo-img"></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="therapists.html" class="nav-link">Therapists</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="exercises.html" class="nav-link">Exercises</a>
+        <a href="faq.html" class="nav-link active">FAQ</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="login.html" class="btn btn-outline">Log In</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="container" style="max-width:760px">
+      <div class="page-header animate-fade-up">
+        <h1>Frequently Asked Questions</h1>
+        <p>Clear answers about privacy, booking, sessions and student support.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item animate-on-scroll" open>
+          <summary>Is my information private and confidential?</summary>
+          <p>Yes. All communication is end-to-end encrypted. We never share your details with third parties. You can delete your session data at any time from your profile settings.</p>
+        </details>
+        <details class="faq-item animate-on-scroll">
+          <summary>How do I book a therapy session?</summary>
+          <p>Create an account, browse therapists, filter by specialisation or gender, view availability, choose a date and time, and confirm. The whole process takes only a few minutes.</p>
+        </details>
+        <details class="faq-item animate-on-scroll">
+          <summary>Can I choose the gender of my therapist?</summary>
+          <p>Yes. Many students prefer a therapist of a specific gender. Use the gender filter on the Therapists page to find someone you feel comfortable with.</p>
+        </details>
+        <details class="faq-item animate-on-scroll">
+          <summary>What types of sessions are available?</summary>
+          <p>You can choose video calls or secure text messaging. Both options are private and can be mixed according to your preference and schedule.</p>
+        </details>
+        <details class="faq-item animate-on-scroll">
+          <summary>I have limited data. Can I still use the site?</summary>
+          <p>Yes. Key self-help resources and exercises work as a progressive web app and remain available even with low or no data connection.</p>
+        </details>
+        <details class="faq-item animate-on-scroll">
+          <summary>Are the therapists qualified?</summary>
+          <p>All therapists are licensed professionals with experience supporting university students. Profiles show credentials, years of experience, specialisations and student ratings.</p>
+        </details>
+        <details class="faq-item animate-on-scroll">
+          <summary>How do I cancel or reschedule a session?</summary>
+          <p>Go to your Dashboard, open the upcoming session, and choose Reschedule or Cancel. You will receive a confirmation message.</p>
+        </details>
+        <details class="faq-item animate-on-scroll">
+          <summary>Is Nash Therapy a replacement for emergency help?</summary>
+          <p>No. If you are in crisis or need immediate help, please contact local emergency services or a crisis hotline. Nash Therapy is for ongoing, non-emergency support.</p>
+        </details>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-copy">© 2026 Nash Therapy. All sessions are confidential.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

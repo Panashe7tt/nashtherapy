@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Nash Therapy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Nash Therapy" class="logo-img">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="therapists.html" class="nav-link">Therapists</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="exercises.html" class="nav-link">Exercises</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="dashboard.html" class="nav-link active">Dashboard</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="btn btn-outline" id="logout-btn">Log Out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="container">
+      <div class="dash-header animate-fade-up">
+        <div class="profile-pic-area">
+          <img id="user-avatar" src="images/student-hero.jpg" alt="Your profile" class="user-avatar">
+          <label class="upload-label">
+            Change photo
+            <input type="file" id="avatar-upload" accept="image/*" hidden>
+          </label>
+        </div>
+        <div>
+          <p class="muted">Welcome back</p>
+          <h1 id="welcome-msg">Hi there, you're doing great</h1>
+          <p class="support-text">Every step you take matters. We're here for your healing and growth.</p>
+        </div>
+      </div>
+
+      <section class="dash-card mood-card animate-on-scroll"><h2>Daily mood check-in</h2><p class="muted">How are you feeling today? Your check-ins are private to this browser account.</p><div class="mood-options" role="group" aria-label="Choose your mood"><button type="button" data-mood="Great">😊<span>Good</span></button><button type="button" data-mood="Okay">😐<span>Okay</span></button><button type="button" data-mood="Low">😔<span>Low</span></button><button type="button" data-mood="Stressed">😟<span>Stressed</span></button><button type="button" data-mood="Anxious">😰<span>Anxious</span></button></div><p id="mood-feedback" class="muted" aria-live="polite"></p><h3>Recent check-ins</h3><ul id="mood-history" class="mood-history"></ul></section>
+      <div class="dash-grid">
+        <section class="dash-card animate-on-scroll" id="session-card">
+          <h2>Upcoming Session</h2>
+          <div id="session-content">
+            <p class="muted">No upcoming sessions yet.</p>
+            <a href="therapists.html" class="btn btn-primary" style="margin-top:12px">Book a Session</a>
+          </div>
+        </section>
+
+        <section class="dash-card animate-on-scroll">
+          <h2>Recent Messages</h2>
+          <div class="message-preview">
+            <strong>Dr. Thandi Mokoena</strong>
+            <p>Hi, I hope you're doing well. Just checking in after our last session...</p>
+            <span class="badge">2 unread</span>
+          </div>
+          <a href="messages.html" class="feature-link">View all messages →</a>
+        </section>
+
+        <section class="dash-card animate-on-scroll">
+          <h2>Quick Tools</h2>
+          <ul class="resource-list">
+            <li><a href="exercises.html">Box Breathing Exercise</a></li>
+            <li><a href="exercises.html">Desk Stretch Timer</a></li>
+            <li><a href="resources.html">Student Resources</a></li>
+            <li><a href="booking.html">Book another session</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Social footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="social-links">
+        <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter" class="social-icon" title="Twitter">𝕏</a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon" title="Instagram">📷</a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon" title="TikTok">♪</a>
+        <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon" title="Facebook">f</a>
+        <a href="https://wa.me/27780204350" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon" title="WhatsApp 078 020 4350">💬</a>
+      </div>
+      <p class="footer-copy">WhatsApp: 078 020 4350 · © 2026 Nash Therapy. All sessions are confidential.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      // Not logged in? Send them to the login page.
+      if (!NashAuth.current()) {
+        window.location.replace("login.html");
+        return;
+      }
+      // Also check when the person uses the browser Back button
+      window.addEventListener("pageshow", function () {
+        if (!NashAuth.current()) window.location.replace("login.html");
+      });
+
+      // Personalised name - read every time the page loads
+      function updateWelcome() {
+        var name = NashAuth.currentUser().name;
+        var el = document.getElementById("welcome-msg");
+        if (name && name.length > 0) {
+          el.textContent = "Hi " + name + ", you're doing great";
+        } else {
+          el.textContent = "Hi there, you're doing great";
+        }
+      }
+      updateWelcome();
+
+      // Booking
+      var bookingRaw = localStorage.getItem(NashAuth.key("nash-booking"));
+      var sessionContent = document.getElementById("session-content");
+      if (bookingRaw) {
+        try {
+          var b = JSON.parse(bookingRaw);
+          if (b.status !== "cancelled") {
+            sessionContent.innerHTML = '<div class="session-info"><img src="' + (b.photo || "images/thandi.jpg") + '" alt="Therapist" class="session-photo"><div><strong>' + b.therapist + '</strong><p class="muted">' + b.date + ' · ' + b.time + ' · ' + b.type + '</p></div></div><div class="dash-actions"><a href="messages.html" class="btn btn-outline">Message</a><a href="booking.html?t=' + (b.therapistId || 'thandi') + '&edit=1" class="btn btn-outline">Reschedule</a><button class="btn btn-outline" id="cancel-booking">Cancel booking</button></div>';
+            document.getElementById('cancel-booking').addEventListener('click', function(){ if(confirm('Cancel this session booking?')) { b.status='cancelled'; localStorage.setItem(NashAuth.key('nash-booking'), JSON.stringify(b)); sessionContent.innerHTML='<p class="muted">Your booking has been cancelled.</p><a href="therapists.html" class="btn btn-primary">Book a Session</a>'; }});
+          }
+        } catch (e) {}
+      }
+
+      // Mood check-ins are stored under the signed-in account key.
+      var moodKey = NashAuth.key('nash-moods');
+      var moods = []; try { moods = JSON.parse(localStorage.getItem(moodKey)) || []; } catch(e) {}
+      function renderMoods(){ var list=document.getElementById('mood-history'); list.innerHTML=''; moods.slice(0,7).forEach(function(m){var li=document.createElement('li');li.textContent=m.emoji+' '+m.mood+' · '+m.date;list.appendChild(li);}); if(!moods.length) list.innerHTML='<li class="muted">Your recent check-ins will appear here.</li>'; }
+      document.querySelectorAll('[data-mood]').forEach(function(btn){btn.addEventListener('click',function(){var map={Great:'😊',Okay:'😐',Low:'😔',Stressed:'😟',Anxious:'😰'};var today=new Date().toLocaleDateString('en-ZA',{day:'numeric',month:'short',year:'numeric'});moods=moods.filter(function(m){return m.date!==today;});moods.unshift({mood:btn.dataset.mood,emoji:map[btn.dataset.mood],date:today});moods=moods.slice(0,7);localStorage.setItem(moodKey,JSON.stringify(moods));document.getElementById('mood-feedback').textContent='Thanks for checking in. Your mood has been saved.';renderMoods();});}); renderMoods();
+
+      // Avatar
+      var avatarImg = document.getElementById("user-avatar");
+      var savedAvatar = localStorage.getItem(NashAuth.key("nash-avatar"));
+      if (savedAvatar) avatarImg.src = savedAvatar;
+      document.getElementById("avatar-upload").addEventListener("change", function (e) {
+        var file = e.target.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function (ev) {
+          avatarImg.src = ev.target.result;
+          localStorage.setItem(NashAuth.key("nash-avatar"), ev.target.result);
+        };
+        reader.readAsDataURL(file);
+      });
+
+      // Logout - ends this person's session
+      document.getElementById("logout-btn").addEventListener("click", function () {
+        NashAuth.logout();
+        window.location.href = "index.html";
+      });
+    })();
+  </script>
+</body>
+</html>

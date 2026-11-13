@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session | Nash Therapy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Nash Therapy" class="logo-img">
+      </a>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="container" style="max-width:720px">
+
+      <!-- STEP 2: Date, Time & Session Type -->
+      <div id="step-datetime">
+        <div class="progress-steps animate-fade-up">
+          <div class="step done"><span>1</span> Details</div>
+          <div class="step active"><span>2</span> Date & Time</div>
+          <div class="step"><span>3</span> Confirm</div>
+        </div>
+        <p class="support-text center animate-fade-up delay-1">You're almost there — take your time</p>
+
+        <div class="booking-panel animate-fade-up delay-2">
+          <h3 style="margin-bottom:12px">Session type</h3>
+          <div class="session-type-options" id="session-type">
+            <button class="type-btn selected" data-type="Video Call">
+              <span class="type-icon">📹</span>
+              <strong>Video Call</strong>
+              <small>Face-to-face online</small>
+            </button>
+            <button class="type-btn" data-type="Voice Call">
+              <span class="type-icon">🎧</span>
+              <strong>Voice Call</strong>
+              <small>Audio only</small>
+            </button>
+          </div>
+
+          <div class="calendar-section" style="margin-top:28px"><h2>Choose a date</h2><label for="booking-date">Session date</label><input type="date" id="booking-date" min="2026-11-13" value="2026-11-16" class="search-input" style="display:block;margin-top:10px"></div>
+
+          <div class="times-section" style="margin-top:24px">
+            <h3>Available times</h3>
+            <div class="time-slots" id="time-slots">
+              <button class="time-slot" data-time="09:00">09:00</button>
+              <button class="time-slot selected" data-time="11:00">11:00</button>
+              <button class="time-slot" data-time="14:00">14:00</button>
+              <button class="time-slot" data-time="16:30">16:30</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-actions animate-fade-up delay-3">
+          <a href="therapist-profile.html" id="back-link" class="btn btn-outline">Back</a>
+          <button id="btn-to-confirm" class="btn btn-primary btn-lg">Continue to Confirm →</button>
+        </div>
+        <p class="privacy-note center">Your booking is confidential and secure.</p>
+      </div>
+
+      <!-- STEP 3: Confirm -->
+      <div id="step-confirm" style="display:none">
+        <div class="progress-steps">
+          <div class="step done"><span>1</span> Details</div>
+          <div class="step done"><span>2</span> Date & Time</div>
+          <div class="step active"><span>3</span> Confirm</div>
+        </div>
+        <p class="support-text center">Please review your booking details</p>
+
+        <div class="booking-panel">
+          <div class="confirm-summary">
+            <div class="confirm-row"><span class="confirm-label">Therapist</span><span class="confirm-value" id="confirm-therapist">Dr. Thandi Mokoena</span></div>
+            <div class="confirm-row"><span class="confirm-label">Date</span><span class="confirm-value" id="confirm-date">9 October 2026</span></div>
+            <div class="confirm-row"><span class="confirm-label">Time</span><span class="confirm-value" id="confirm-time">11:00</span></div>
+            <div class="confirm-row"><span class="confirm-label">Session type</span><span class="confirm-value" id="confirm-type">Video Call · 45 minutes</span></div>
+            <div class="confirm-row"><span class="confirm-label">Location</span><span class="confirm-value">Online (secure link will be sent)</span></div>
+          </div>
+        </div>
+
+        <div class="booking-actions">
+          <button id="btn-back-datetime" class="btn btn-outline">Back</button>
+          <button id="btn-confirm-booking" class="btn btn-primary btn-lg">Confirm Booking</button>
+        </div>
+        <p class="privacy-note center">By confirming you agree that this session is confidential.</p>
+      </div>
+
+      <!-- SUCCESS -->
+      <div id="step-success" style="display:none">
+        <div class="success-card animate-fade-up">
+          <div class="success-icon">✓</div>
+          <h1>Booking Confirmed!</h1>
+          <p class="success-msg">Your session with <strong id="success-therapist">Dr. Thandi Mokoena</strong> has been successfully booked.</p>
+          <div class="confirm-summary" style="text-align:left; margin:24px 0">
+            <div class="confirm-row"><span class="confirm-label">Date</span><span class="confirm-value" id="success-date">9 October 2026</span></div>
+            <div class="confirm-row"><span class="confirm-label">Time</span><span class="confirm-value" id="success-time">11:00</span></div>
+            <div class="confirm-row"><span class="confirm-label">Type</span><span class="confirm-value" id="success-type">Video Call · 45 min</span></div>
+          </div>
+          <p class="muted">A confirmation has been saved to your dashboard.</p>
+          <div style="display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap">
+            <a href="dashboard.html" class="btn btn-primary btn-lg">Go to Dashboard</a>
+            <a href="messages.html" class="btn btn-outline btn-lg">Message Therapist</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="therapist-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      var dateInput = document.getElementById('booking-date');
+      var today = new Date(); var todayISO = new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().slice(0,10); dateInput.min = todayISO; if (dateInput.value < todayISO) dateInput.value = todayISO;
+      var selectedDate = dateInput.value;
+      var selectedTime = "11:00";
+      var selectedType = "Video Call";
+
+      var therapistId = window.getNashTherapistId();
+      var therapist = window.NASH_THERAPISTS[therapistId];
+      document.getElementById("confirm-therapist").textContent = therapist.name;
+      document.getElementById("success-therapist").textContent = therapist.name;
+      document.getElementById("back-link").href = "therapist-profile.html?t=" + therapistId;
+
+      document.querySelectorAll(".type-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll(".type-btn").forEach(function (b) { b.classList.remove("selected"); });
+          btn.classList.add("selected");
+          selectedType = btn.getAttribute("data-type");
+        });
+      });
+
+      document.getElementById('booking-date').addEventListener('change', function(){ selectedDate=this.value; });
+      var existingBooking = null; try { existingBooking=JSON.parse(localStorage.getItem(NashAuth.key('nash-booking'))); } catch(e) {}
+      if (new URLSearchParams(location.search).get('edit')==='1' && existingBooking) { var previousDate=existingBooking.isoDate || todayISO; document.getElementById('booking-date').value=previousDate>=todayISO?previousDate:todayISO; selectedDate=document.getElementById('booking-date').value; selectedTime=existingBooking.time || selectedTime; }
+
+      document.querySelectorAll(".time-slot").forEach(function (slot) {
+        slot.addEventListener("click", function () {
+          document.querySelectorAll(".time-slot").forEach(function (s) { s.classList.remove("selected"); });
+          slot.classList.add("selected");
+          selectedTime = slot.getAttribute("data-time");
+        });
+      });
+
+      function formatDate(d) { return new Date(d + 'T12:00:00').toLocaleDateString('en-ZA',{day:'numeric',month:'long',year:'numeric'}); }
+
+      document.getElementById("btn-to-confirm").addEventListener("click", function () {
+        document.getElementById("confirm-date").textContent = formatDate(selectedDate);
+        document.getElementById("confirm-time").textContent = selectedTime;
+        document.getElementById("confirm-type").textContent = selectedType + " · 45 minutes";
+        document.getElementById("step-datetime").style.display = "none";
+        document.getElementById("step-confirm").style.display = "block";
+        window.scrollTo(0, 0);
+      });
+
+      document.getElementById("btn-back-datetime").addEventListener("click", function () {
+        document.getElementById("step-confirm").style.display = "none";
+        document.getElementById("step-datetime").style.display = "block";
+        window.scrollTo(0, 0);
+      });
+
+      document.getElementById("btn-confirm-booking").addEventListener("click", function () {
+        document.getElementById("success-date").textContent = formatDate(selectedDate);
+        document.getElementById("success-time").textContent = selectedTime;
+        document.getElementById("success-type").textContent = selectedType + " · 45 min";
+
+        localStorage.setItem(NashAuth.key("nash-booking"), JSON.stringify({
+          therapist: therapist.name,
+          photo: therapist.photo,
+          date: formatDate(selectedDate), isoDate: selectedDate, time: selectedTime, therapistId: therapistId, status: 'booked',
+          type: selectedType + " · 45 min"
+        }));
+
+        document.getElementById("step-confirm").style.display = "none";
+        document.getElementById("step-success").style.display = "block";
+        window.scrollTo(0, 0);
+      });
+    })();
+  </script>
+</body>
+</html>

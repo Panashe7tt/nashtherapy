@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Thandi Mokoena | Nash Therapy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo"><img src="images/logo.png" alt="Nash Therapy" class="logo-img"></a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="therapists.html" class="nav-link active">Therapists</a>
+        <a href="resources.html" class="nav-link">Resources</a>
+        <a href="exercises.html" class="nav-link">Exercises</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="dashboard.html" class="nav-link">Dashboard</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <div class="container">
+      <a href="therapists.html" class="back-link animate-fade-up">← Back to Therapists</a>
+
+      <div class="profile-layout animate-fade-up delay-1">
+        <div class="profile-main">
+          <div class="profile-header">
+            <img src="images/thandi.jpg" alt="Dr. Thandi Mokoena" class="profile-photo" id="p-photo">
+            <div>
+              <p class="verified-badge">Verified Therapist</p>
+              <h1 id="p-name">Dr. Thandi Mokoena</h1>
+              <p class="therapist-cred" id="p-cred"></p>
+              <div class="tags" style="margin-top:12px" id="p-tags"></div>
+              <p class="meta-line" id="p-location"></p>
+            </div>
+          </div>
+
+          <section class="profile-section">
+            <h2 id="p-about-title">About</h2>
+            <p id="p-about"></p>
+            <p class="support-text">You don't have to go through it alone.</p>
+          </section>
+
+          <section class="profile-section">
+            <h2>Qualifications &amp; History</h2>
+            <ul class="qual-list" id="p-quals"></ul>
+          </section>
+
+          <section class="profile-section">
+            <h2>What students say</h2>
+            <div class="testimonials" id="p-reviews"></div>
+          </section>
+        </div>
+
+        <aside class="profile-sidebar">
+          <div class="availability-card">
+            <h3>Availability</h3>
+            <p class="muted">All times in South Africa Standard Time (SAST)</p>
+            <div class="week-avail" id="p-avail"></div>
+            <a href="booking.html?t=thandi" id="p-book" class="btn btn-primary btn-lg btn-full" style="margin-top:20px">Book Session with Thandi</a>
+            <p class="privacy-note">Your booking is confidential and secure.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <script src="therapist-data.js"></script>
+  <script src="script.js"></script>
+  <script>
+    (function () {
+      var id = window.getNashTherapistId();
+      var t = window.NASH_THERAPISTS[id];
+      document.title = t.name + " | Nash Therapy";
+      var photo = document.getElementById("p-photo");
+      photo.src = t.photo; photo.alt = t.name;
+      document.getElementById("p-name").textContent = t.name;
+      document.getElementById("p-cred").textContent = t.cred;
+      document.getElementById("p-location").textContent = t.location;
+      document.getElementById("p-about-title").textContent = "About " + t.first;
+      document.getElementById("p-about").textContent = t.about;
+      document.getElementById("p-tags").innerHTML = t.tags.map(function (x) { return '<span class="tag">' + x + '</span>'; }).join("");
+      document.getElementById("p-quals").innerHTML = t.qualifications.map(function (x) { return "<li>" + x + "</li>"; }).join("");
+      document.getElementById("p-reviews").innerHTML = t.reviews.map(function (x) { return "<blockquote>" + x + "</blockquote>"; }).join("");
+      document.getElementById("p-avail").innerHTML = t.availability.map(function (d) { return "<div><strong>" + d[0] + "</strong><br>" + d[1] + "</div>"; }).join("");
+      var book = document.getElementById("p-book");
+      book.href = "booking.html?t=" + id;
+      book.textContent = "Book Session with " + t.first;
+    })();
+  </script>
+</body>
+</html>
